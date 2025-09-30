@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1.3: Meet Alia - Standards Alignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .selector-section {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #667eea;
+        }
+
+        .selector-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .state-selector {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-selector:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .standards-display {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .standards-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .standards-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .standards-section {
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .standards-section h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .standard-item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .standard-code {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .standard-text {
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .lesson-info {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #667eea;
+        }
+
+        .lesson-info h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .selector-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lab 1.3: Meet Alia - Your AI Lab Partner</h1>
+            <p>Standards Alignment Tool for Teachers</p>
+        </div>
+
+        <div class="content">
+            <div class="lesson-info">
+                <h3>Lab Overview</h3>
+                <p><strong>Lab 1.3</strong> is the first hands-on experimentation day where students conduct structured experiments with Alia (Textual AI). Through nine guided experiments, students test capabilities (explanation, creativity, instruction-following) and limitations (real-time information, visual processing, time tracking). Students document observations in field journals using scientific methodology, developing skills in systematic observation, hypothesis testing, and evidence-based reasoning.</p>
+            </div>
+
+            <div class="selector-section">
+                <div class="selector-label">Select your state or standards framework:</div>
+                <select id="stateSelector" class="state-selector">
+                    <option value="">Choose your state...</option>
+                    <option value="c3">C3 Framework (National Social Studies)</option>
+                    <option value="ngss">Next Generation Science Standards (NGSS)</option>
+                    <option value="california">California</option>
+                    <option value="texas">Texas</option>
+                    <option value="florida">Florida</option>
+                    <option value="new_york">New York</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="north_carolina">North Carolina</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="washington">Washington</option>
+                    <option value="mississippi">Mississippi</option>
+                </select>
+            </div>
+
+            <div id="standardsDisplay" class="standards-display">
+                <!-- Standards content will be populated here -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Understanding AI: A Conceptual and Experiential Approach - Lab 1.3</p>
+        </div>
+    </div>
+
+    <script>
+        const standardsData = {
+            c3: {
+                title: "C3 Framework - College, Career, and Civic Life (National)",
+                sections: {
+                    "Dimension 3 - Gathering and Evaluating Sources": [
+                        {
+                            code: "D3.1.9-12",
+                            text: "Gather relevant information from multiple sources representing a wide range of views while using the origin, authority, structure, context, and corroborative value of the sources to guide the selection."
+                        },
+                        {
+                            code: "D3.3.9-12",
+                            text: "Identify evidence that draws information directly and substantively from multiple sources to detect inconsistencies in evidence in order to revise or strengthen claims."
+                        }
+                    ],
+                    "Dimension 4 - Communicating and Critiquing Conclusions": [
+                        {
+                            code: "D4.1.9-12",
+                            text: "Construct arguments using precise and knowledgeable claims, with evidence from multiple sources, while acknowledging counterclaims and evidentiary weaknesses."
+                        },
+                        {
+                            code: "D4.3.9-12",
+                            text: "Present adaptations of arguments and explanations that feature evocative ideas and perspectives on issues and topics to reach a range of audiences and venues outside the classroom."
+                        }
+                    ]
+                }
+            },
+            ngss: {
+                title: "Next Generation Science Standards (NGSS)",
+                sections: {
+                    "Science & Engineering Practices": [
+                        {
+                            code: "Planning and Carrying Out Investigations",
+                            text: "Plan and conduct an investigation individually and collaboratively to produce data to serve as the basis for evidence."
+                        },
+                        {
+                            code: "Analyzing and Interpreting Data",
+                            text: "Analyze data using tools, technologies, and/or models to make valid and reliable scientific claims or determine an optimal design solution."
+                        },
+                        {
+                            code: "Engaging in Argument from Evidence",
+                            text: "Construct and present oral and written arguments supported by empirical evidence and scientific reasoning to support or refute an explanation or a model for a phenomenon."
+                        },
+                        {
+                            code: "Obtaining, Evaluating, and Communicating Information",
+                            text: "Critically read scientific literature adapted for classroom use to determine the central ideas or conclusions; collect data to produce data to serve as the basis for evidence to answer scientific questions."
+                        }
+                    ],
+                    "Crosscutting Concepts": [
+                        {
+                            code: "Patterns",
+                            text: "Observed patterns of forms and events guide organization and classification, and they prompt questions about relationships and the factors that influence them."
+                        },
+                        {
+                            code: "Systems and System Models",
+                            text: "Models can be used to predict the behavior of a system, but these predictions have limited precision and reliability due to the assumptions and approximations inherent in models."
+                        }
+                    ]
+                }
+            },
+            california: {
+                title: "California Education Standards",
+                sections: {
+                    "CTE - Information and Communication Technologies": [
+                        {
+                            code: "ICT 4.1",
+                            text: "Understand artificial intelligence concepts and identify real-world applications of AI systems."
+                        },
+                        {
+                            code: "ICT 8.1",
+                            text: "Use critical thinking to make informed decisions and solve problems in technology contexts."
+                        }
+                    ],
+                    "Science - Investigation and Experimentation": [
+                        {
+                            code: "IE 1.a",
+                            text: "Select and use appropriate tools and technology to perform tests, collect data, analyze relationships, and display data."
+                        },
+                        {
+                            code: "IE 1.d",
+                            text: "Formulate explanations by using logic and evidence."
+                        },
+                        {
+                            code: "IE 1.f",
+                            text: "Distinguish between hypothesis and theory as scientific terms."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            texas: {
+                title: "Texas Essential Knowledge and Skills (TEKS)",
+                sections: {
+                    "CTE - Information Technology": [
+                        {
+                            code: "IT §130.277(c)(6)(A)",
+                            text: "The student analyzes the impact of emerging technologies. The student is expected to evaluate the impact of artificial intelligence on society."
+                        }
+                    ],
+                    "Science - Scientific Investigation": [
+                        {
+                            code: "§112.34(b)(2)(A-E)",
+                            text: "Scientific investigation and reasoning. The student uses scientific practices during laboratory and field investigations."
+                        },
+                        {
+                            code: "§112.34(b)(3)(A)",
+                            text: "The student uses critical thinking, scientific reasoning, and problem solving to make informed decisions."
+                        }
+                    ],
+                    "ELA - Research": [
+                        {
+                            code: "E1.13(A-B)",
+                            text: "Students use elements of the writing process to compose text. Students are expected to plan a first draft and develop drafts by organizing and revising."
+                        }
+                    ]
+                }
+            },
+            florida: {
+                title: "Florida Standards",
+                sections: {
+                    "CTE - Information Technology": [
+                        {
+                            code: "IT-ITS 5.0",
+                            text: "Describe emerging technologies that affect the field of information technology."
+                        }
+                    ],
+                    "Digital Literacy & Computer Science": [
+                        {
+                            code: "CS.912.CS-CS.1.3",
+                            text: "Describe how artificial intelligence drives many software and physical systems."
+                        }
+                    ],
+                    "Nature of Science": [
+                        {
+                            code: "SC.912.N.1.1",
+                            text: "Define a problem based on a specific body of knowledge, including life science, earth and space science, or physical science, and do the following: plan and carry out scientific investigations, identify variables, collect and organize data, interpret data in charts, tables, and graphics."
+                        },
+                        {
+                            code: "SC.912.N.1.3",
+                            text: "Recognize that the strength or usefulness of a scientific claim is evaluated through scientific argumentation, which depends on critical and logical thinking, and the active consideration of alternative scientific explanations."
+                        }
+                    ]
+                }
+            },
+            new_york: {
+                title: "New York State Standards",
+                sections: {
+                    "Computer Science & Digital Fluency": [
+                        {
+                            code: "9-12.IC.7",
+                            text: "Investigate the use of computer science in multiple fields."
+                        }
+                    ],
+                    "Science - Scientific Inquiry": [
+                        {
+                            code: "LE Standard 1 - Key Idea 1",
+                            text: "The central purpose of scientific inquiry is to develop explanations of natural phenomena in a continuing and creative process."
+                        },
+                        {
+                            code: "LE Standard 1 - Key Idea 3",
+                            text: "The observations made while testing proposed explanations, when analyzed using conventional and invented methods, provide new insights into natural phenomena."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            pennsylvania: {
+                title: "Pennsylvania Academic Standards",
+                sections: {
+                    "Science and Technology": [
+                        {
+                            code: "3.2.10.A",
+                            text: "Apply the components of scientific processes to different types of investigations."
+                        },
+                        {
+                            code: "3.2.12.A",
+                            text: "Evaluate experimental information for accuracy and adherence to science processes."
+                        }
+                    ],
+                    "Career Education and Work": [
+                        {
+                            code: "13.3.11.C",
+                            text: "Identify and demonstrate literacy, and computational skills necessary to process employment, business, and technology information."
+                        }
+                    ],
+                    "Writing": [
+                        {
+                            code: "CC.1.4.9-10.X",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of discipline-specific tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            illinois: {
+                title: "Illinois Learning Standards",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "9-12.IC.SI.1",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        }
+                    ],
+                    "Science - Inquiry and Investigation": [
+                        {
+                            code: "HS-ETS1-3",
+                            text: "Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            ohio: {
+                title: "Ohio Learning Standards",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "CS.HS.IC.1",
+                            text: "Evaluate the beneficial and harmful effects computing has had on society."
+                        }
+                    ],
+                    "Science - Scientific Inquiry, Practice and Applications": [
+                        {
+                            code: "SI.A.2",
+                            text: "Design and conduct scientific investigations."
+                        },
+                        {
+                            code: "SI.A.5",
+                            text: "Develop descriptions, models, explanations and predictions."
+                        },
+                        {
+                            code: "SI.A.8",
+                            text: "Communicate and support a scientific argument."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            georgia: {
+                title: "Georgia Standards of Excellence",
+                sections: {
+                    "Information Technology": [
+                        {
+                            code: "IT-ITS-1",
+                            text: "Students will explore information technology careers, emerging technologies, and pathways."
+                        }
+                    ],
+                    "Science - Characteristics of Science": [
+                        {
+                            code: "SCSh2",
+                            text: "Students will use standard safety practices for all classroom laboratory and field investigations."
+                        },
+                        {
+                            code: "SCSh3",
+                            text: "Students will identify and investigate problems scientifically."
+                        },
+                        {
+                            code: "SCSh4",
+                            text: "Students use tools and instruments for observing, measuring, and manipulating scientific equipment and materials."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "ELAGSE9-10W10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            north_carolina: {
+                title: "North Carolina Standard Course of Study",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "CS.IC.9-12.1",
+                            text: "Evaluate the beneficial and harmful effects that computational artifacts and innovations have on society, economy, and culture."
+                        }
+                    ],
+                    "Science - Science as Inquiry": [
+                        {
+                            code: "Inquiry Standards",
+                            text: "Design and conduct scientific investigations, use appropriate tools and techniques to gather and interpret data, think critically and logically to connect evidence and explanations."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            michigan: {
+                title: "Michigan Academic Standards",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "HS.IC.SI.1",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        }
+                    ],
+                    "Science - Inquiry, Reflection and Social Implications": [
+                        {
+                            code: "HS-ETS1-2",
+                            text: "Design a solution to a complex real-world problem by breaking it down into smaller, more manageable problems."
+                        },
+                        {
+                            code: "HS-ETS1-3",
+                            text: "Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            washington: {
+                title: "Washington State Learning Standards",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "9-12.IC.SI.01",
+                            text: "Evaluate computational artifacts with regard to improving their beneficial effects and reducing harmful effects on society."
+                        }
+                    ],
+                    "Science - Systems and System Models": [
+                        {
+                            code: "HS-ETS1-3",
+                            text: "Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "W.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            mississippi: {
+                title: "Mississippi College and Career Readiness Standards",
+                sections: {
+                    "Career and Technical Education - IT": [
+                        {
+                            code: "IT.1.1",
+                            text: "Demonstrate knowledge of information technology industry, emerging technologies, and career pathways."
+                        }
+                    ],
+                    "Science - Inquiry": [
+                        {
+                            code: "CCR.Science.RST.9-10.3",
+                            text: "Follow precisely a complex multistep procedure when carrying out experiments, taking measurements, or performing technical tasks."
+                        },
+                        {
+                            code: "CCR.Science.WHST.9-10.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of discipline-specific tasks, purposes, and audiences."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "CCR.Writing.9-12.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            }
+        };
+
+        document.getElementById('stateSelector').addEventListener('change', function() {
+            const selectedState = this.value;
+            const displayDiv = document.getElementById('standardsDisplay');
+            
+            if (selectedState && standardsData[selectedState]) {
+                displayStandards(selectedState);
+                displayDiv.style.display = 'block';
+            } else {
+                displayDiv.style.display = 'none';
+            }
+        });
+
+        function displayStandards(state) {
+            const data = standardsData[state];
+            const displayDiv = document.getElementById('standardsDisplay');
+            
+            let html = `
+                <div class="standards-header">
+                    <h2>${data.title}</h2>
+                    <p>Standards addressed by Lab 1.3: Meet Alia - Your AI Lab Partner</p>
+                </div>
+            `;
+            
+            for (const [sectionName, standards] of Object.entries(data.sections)) {
+                html += `
+                    <div class="standards-section">
+                        <h3>${sectionName}</h3>
+                `;
+                
+                standards.forEach(standard => {
+                    html += `
+                        <div class="standard-item">
+                            <div class="standard-code">${standard.code}</div>
+                            <div class="standard-text">${standard.text}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+            
+            displayDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
