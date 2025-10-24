@@ -192,11 +192,9 @@
             <div class="selector-section">
                 <div class="selector-label">Select your state or standards framework:</div>
                 <select id="stateSelector" class="state-selector">
-                    <option value="">Choose your state...</option>
-                    <option value="c3">C3 Framework (National Social Studies)</option>
-                    <option value="ngss">Next Generation Science Standards (NGSS)</option>
+                    <option value="">-- Choose State Standards --</option>
+                    <option value="texas">Texas (TEKS)</option>
                     <option value="california">California</option>
-                    <option value="texas">Texas</option>
                     <option value="florida">Florida</option>
                     <option value="new_york">New York</option>
                     <option value="pennsylvania">Pennsylvania</option>
@@ -205,8 +203,15 @@
                     <option value="georgia">Georgia</option>
                     <option value="north_carolina">North Carolina</option>
                     <option value="michigan">Michigan</option>
+                    <option value="virginia">Virginia</option>
                     <option value="washington">Washington</option>
                     <option value="mississippi">Mississippi</option>
+                    <option value="colorado">Colorado</option>
+                    <option value="ccss_math">Common Core State Standards (CCSS) - Math</option>
+                    <option value="ngss">Next Generation Science Standards (NGSS)</option>
+                    <option value="iste">ISTE Standards for Students</option>
+                    <option value="csta">CSTA K-12 Computer Science Standards</option>
+                    <option value="c3">C3 Framework for Social Studies</option>
                 </select>
             </div>
 
@@ -222,60 +227,41 @@
 
     <script>
         const standardsData = {
-            c3: {
-                title: "C3 Framework - College, Career, and Civic Life (National)",
+            texas: {
+                title: "Texas Essential Knowledge and Skills (TEKS)",
                 sections: {
-                    "Dimension 3 - Gathering and Evaluating Sources": [
+                    "CTE - Information Technology": [
                         {
-                            code: "D3.1.9-12",
-                            text: "Gather relevant information from multiple sources representing a wide range of views while using the origin, authority, structure, context, and corroborative value of the sources to guide the selection."
+                            code: "IT §130.277(c)(6)(A)",
+                            text: "The student analyzes the impact of emerging technologies. The student is expected to evaluate the impact of artificial intelligence on society."
                         },
                         {
-                            code: "D3.3.9-12",
-                            text: "Identify evidence that draws information directly and substantively from multiple sources to detect inconsistencies in evidence in order to revise or strengthen claims."
+                            code: "IT §130.277(c)(6)(C)",
+                            text: "The student is expected to analyze ethical and legal issues related to the use of information technology."
                         }
                     ],
-                    "Dimension 4 - Communicating and Critiquing Conclusions": [
+                    "Science - Scientific Investigation": [
                         {
-                            code: "D4.1.9-12",
-                            text: "Construct arguments using precise and knowledgeable claims, with evidence from multiple sources, while acknowledging counterclaims and evidentiary weaknesses."
+                            code: "§112.34(b)(2)(A)",
+                            text: "Plan and implement comparative and descriptive investigations by making observations, asking well-defined questions, and using appropriate equipment and technology."
                         },
                         {
-                            code: "D4.3.9-12",
-                            text: "Present adaptations of arguments and explanations that feature evocative ideas and perspectives on issues and topics to reach a range of audiences and venues outside the classroom."
-                        }
-                    ]
-                }
-            },
-            ngss: {
-                title: "Next Generation Science Standards (NGSS)",
-                sections: {
-                    "Science & Engineering Practices": [
-                        {
-                            code: "Planning and Carrying Out Investigations",
-                            text: "Plan and conduct an investigation individually and collaboratively to produce data to serve as the basis for evidence."
+                            code: "§112.34(b)(2)(B)",
+                            text: "Design and implement experimental investigations by making observations, asking well-defined questions, formulating testable hypotheses, and using appropriate equipment and technology."
                         },
                         {
-                            code: "Analyzing and Interpreting Data",
-                            text: "Analyze data using tools, technologies, and/or models to make valid and reliable scientific claims or determine an optimal design solution."
+                            code: "§112.34(b)(2)(E)",
+                            text: "Demonstrate the use of course apparatus, equipment, techniques, and procedures."
                         },
                         {
-                            code: "Engaging in Argument from Evidence",
-                            text: "Construct and present oral and written arguments supported by empirical evidence and scientific reasoning to support or refute an explanation or a model for a phenomenon."
-                        },
-                        {
-                            code: "Obtaining, Evaluating, and Communicating Information",
-                            text: "Critically read scientific literature adapted for classroom use to determine the central ideas or conclusions; collect data to produce data to serve as the basis for evidence to answer scientific questions."
+                            code: "§112.34(b)(2)(G)",
+                            text: "Organize and evaluate data and make inferences from data, including the use of tables, charts, and graphs."
                         }
                     ],
-                    "Crosscutting Concepts": [
+                    "ELA - Research & Writing": [
                         {
-                            code: "Patterns",
-                            text: "Observed patterns of forms and events guide organization and classification, and they prompt questions about relationships and the factors that influence them."
-                        },
-                        {
-                            code: "Systems and System Models",
-                            text: "Models can be used to predict the behavior of a system, but these predictions have limited precision and reliability due to the assumptions and approximations inherent in models."
+                            code: "E1.13(C)",
+                            text: "Revise drafts to improve clarity, development, organization, style, diction, and sentence fluency."
                         }
                     ]
                 }
@@ -289,6 +275,10 @@
                             text: "Understand artificial intelligence concepts and identify real-world applications of AI systems."
                         },
                         {
+                            code: "ICT 4.2",
+                            text: "Analyze ethical implications of artificial intelligence in society."
+                        },
+                        {
                             code: "ICT 8.1",
                             text: "Use critical thinking to make informed decisions and solve problems in technology contexts."
                         }
@@ -297,6 +287,10 @@
                         {
                             code: "IE 1.a",
                             text: "Select and use appropriate tools and technology to perform tests, collect data, analyze relationships, and display data."
+                        },
+                        {
+                            code: "IE 1.b",
+                            text: "Identify and communicate sources of unavoidable experimental error."
                         },
                         {
                             code: "IE 1.d",
@@ -310,34 +304,7 @@
                     "ELA - Writing": [
                         {
                             code: "W.9-10.10",
-                            text: "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
-                        }
-                    ]
-                }
-            },
-            texas: {
-                title: "Texas Essential Knowledge and Skills (TEKS)",
-                sections: {
-                    "CTE - Information Technology": [
-                        {
-                            code: "IT §130.277(c)(6)(A)",
-                            text: "The student analyzes the impact of emerging technologies. The student is expected to evaluate the impact of artificial intelligence on society."
-                        }
-                    ],
-                    "Science - Scientific Investigation": [
-                        {
-                            code: "§112.34(b)(2)(A-E)",
-                            text: "Scientific investigation and reasoning. The student uses scientific practices during laboratory and field investigations."
-                        },
-                        {
-                            code: "§112.34(b)(3)(A)",
-                            text: "The student uses critical thinking, scientific reasoning, and problem solving to make informed decisions."
-                        }
-                    ],
-                    "ELA - Research": [
-                        {
-                            code: "E1.13(A-B)",
-                            text: "Students use elements of the writing process to compose text. Students are expected to plan a first draft and develop drafts by organizing and revising."
+                            text: "Write routinely over extended time frames for a range of tasks, purposes, and audiences."
                         }
                     ]
                 }
@@ -355,16 +322,30 @@
                         {
                             code: "CS.912.CS-CS.1.3",
                             text: "Describe how artificial intelligence drives many software and physical systems."
+                        },
+                        {
+                            code: "CS.912.IC-SI.1.1",
+                            text: "Explain the impacts of computing on societal issues."
                         }
                     ],
                     "Nature of Science": [
                         {
                             code: "SC.912.N.1.1",
-                            text: "Define a problem based on a specific body of knowledge, including life science, earth and space science, or physical science, and do the following: plan and carry out scientific investigations, identify variables, collect and organize data, interpret data in charts, tables, and graphics."
+                            text: "Define a problem based on a specific body of knowledge; plan and carry out scientific investigations; identify variables; collect and organize data; interpret data in charts, tables, and graphics."
                         },
                         {
                             code: "SC.912.N.1.3",
-                            text: "Recognize that the strength or usefulness of a scientific claim is evaluated through scientific argumentation, which depends on critical and logical thinking, and the active consideration of alternative scientific explanations."
+                            text: "Recognize that the strength or usefulness of a scientific claim is evaluated through scientific argumentation, which depends on critical and logical thinking."
+                        },
+                        {
+                            code: "SC.912.N.1.4",
+                            text: "Identify sources of information and assess their reliability according to the strict standards of scientific investigation."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "LAFS.910.W.3.10",
+                            text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
                         }
                     ]
                 }
@@ -374,17 +355,25 @@
                 sections: {
                     "Computer Science & Digital Fluency": [
                         {
+                            code: "9-12.IC.5",
+                            text: "Describe ways that complex computer systems can be designed for inclusivity and to mitigate unintended consequences."
+                        },
+                        {
                             code: "9-12.IC.7",
                             text: "Investigate the use of computer science in multiple fields."
                         }
                     ],
                     "Science - Scientific Inquiry": [
                         {
-                            code: "LE Standard 1 - Key Idea 1",
+                            code: "Standard 1 - Key Idea 1",
                             text: "The central purpose of scientific inquiry is to develop explanations of natural phenomena in a continuing and creative process."
                         },
                         {
-                            code: "LE Standard 1 - Key Idea 3",
+                            code: "Standard 1 - Key Idea 2",
+                            text: "Beyond the use of reasoning and consensus, scientific inquiry involves testing of proposed explanations involving the use of conventional techniques and procedures."
+                        },
+                        {
+                            code: "Standard 1 - Key Idea 3",
                             text: "The observations made while testing proposed explanations, when analyzed using conventional and invented methods, provide new insights into natural phenomena."
                         }
                     ],
@@ -405,14 +394,22 @@
                             text: "Apply the components of scientific processes to different types of investigations."
                         },
                         {
+                            code: "3.2.10.B",
+                            text: "Apply appropriate tools, materials, and processes to solve technological challenges."
+                        },
+                        {
                             code: "3.2.12.A",
                             text: "Evaluate experimental information for accuracy and adherence to science processes."
+                        },
+                        {
+                            code: "3.4.10.A",
+                            text: "Explain how scientific and technological developments affect personal, social, and workplace decisions."
                         }
                     ],
                     "Career Education and Work": [
                         {
                             code: "13.3.11.C",
-                            text: "Identify and demonstrate literacy, and computational skills necessary to process employment, business, and technology information."
+                            text: "Identify and demonstrate literacy and computational skills necessary to process employment, business, and technology information."
                         }
                     ],
                     "Writing": [
@@ -430,9 +427,17 @@
                         {
                             code: "9-12.IC.SI.1",
                             text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        },
+                        {
+                            code: "9-12.IC.C.1",
+                            text: "Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society."
                         }
                     ],
                     "Science - Inquiry and Investigation": [
+                        {
+                            code: "HS-ETS1-2",
+                            text: "Design a solution to a complex real-world problem by breaking it down into smaller, more manageable problems that can be solved through engineering."
+                        },
                         {
                             code: "HS-ETS1-3",
                             text: "Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
@@ -461,8 +466,16 @@
                             text: "Design and conduct scientific investigations."
                         },
                         {
+                            code: "SI.A.3",
+                            text: "Use appropriate mathematics, tools and techniques to gather data and information."
+                        },
+                        {
                             code: "SI.A.5",
                             text: "Develop descriptions, models, explanations and predictions."
+                        },
+                        {
+                            code: "SI.A.6",
+                            text: "Think critically and logically to connect evidence and explanations."
                         },
                         {
                             code: "SI.A.8",
@@ -484,6 +497,10 @@
                         {
                             code: "IT-ITS-1",
                             text: "Students will explore information technology careers, emerging technologies, and pathways."
+                        },
+                        {
+                            code: "IT-WD-5",
+                            text: "Students will evaluate emerging technologies and their impact on society."
                         }
                     ],
                     "Science - Characteristics of Science": [
@@ -498,6 +515,10 @@
                         {
                             code: "SCSh4",
                             text: "Students use tools and instruments for observing, measuring, and manipulating scientific equipment and materials."
+                        },
+                        {
+                            code: "SCSh8",
+                            text: "Students will understand important features of the process of scientific inquiry."
                         }
                     ],
                     "ELA - Writing": [
@@ -515,12 +536,16 @@
                         {
                             code: "CS.IC.9-12.1",
                             text: "Evaluate the beneficial and harmful effects that computational artifacts and innovations have on society, economy, and culture."
+                        },
+                        {
+                            code: "CS.IC.9-12.2",
+                            text: "Evaluate the impact of equity, access, and influence on the distribution of computing resources in a global society."
                         }
                     ],
                     "Science - Science as Inquiry": [
                         {
                             code: "Inquiry Standards",
-                            text: "Design and conduct scientific investigations, use appropriate tools and techniques to gather and interpret data, think critically and logically to connect evidence and explanations."
+                            text: "Design and conduct scientific investigations; use appropriate tools and techniques to gather and interpret data; think critically and logically to connect evidence and explanations; communicate and defend scientific arguments."
                         }
                     ],
                     "ELA - Writing": [
@@ -538,9 +563,17 @@
                         {
                             code: "HS.IC.SI.1",
                             text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        },
+                        {
+                            code: "HS.IC.C.1",
+                            text: "Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society."
                         }
                     ],
                     "Science - Inquiry, Reflection and Social Implications": [
+                        {
+                            code: "HS-ETS1-1",
+                            text: "Analyze a major global challenge to specify qualitative and quantitative criteria and constraints for solutions."
+                        },
                         {
                             code: "HS-ETS1-2",
                             text: "Design a solution to a complex real-world problem by breaking it down into smaller, more manageable problems."
@@ -558,6 +591,41 @@
                     ]
                 }
             },
+            virginia: {
+                title: "Virginia Standards of Learning",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "CS.9-12.IC.1",
+                            text: "Analyze the beneficial and harmful effects of computing innovations on society, economy, and culture."
+                        },
+                        {
+                            code: "CS.9-12.IC.2",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        }
+                    ],
+                    "Science - Scientific Investigation": [
+                        {
+                            code: "SI.1",
+                            text: "Demonstrate an understanding of scientific reasoning, logic, and the nature of science by planning and conducting investigations."
+                        },
+                        {
+                            code: "SI.3",
+                            text: "Collect, record, analyze, and report data."
+                        },
+                        {
+                            code: "SI.5",
+                            text: "Use current applications to analyze, review, and critique scientific ideas."
+                        }
+                    ],
+                    "ELA - Writing": [
+                        {
+                            code: "9.6",
+                            text: "The student will write in a variety of forms to include expository, persuasive, reflective, and informational texts."
+                        }
+                    ]
+                }
+            },
             washington: {
                 title: "Washington State Learning Standards",
                 sections: {
@@ -565,9 +633,17 @@
                         {
                             code: "9-12.IC.SI.01",
                             text: "Evaluate computational artifacts with regard to improving their beneficial effects and reducing harmful effects on society."
+                        },
+                        {
+                            code: "9-12.IC.C.01",
+                            text: "Evaluate the ways computing innovations impact culture, society, and individuals."
                         }
                     ],
                     "Science - Systems and System Models": [
+                        {
+                            code: "HS-ETS1-2",
+                            text: "Design a solution to a complex real-world problem by breaking it down into smaller, more manageable problems."
+                        },
                         {
                             code: "HS-ETS1-3",
                             text: "Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
@@ -588,12 +664,20 @@
                         {
                             code: "IT.1.1",
                             text: "Demonstrate knowledge of information technology industry, emerging technologies, and career pathways."
+                        },
+                        {
+                            code: "IT.4.1",
+                            text: "Evaluate the impact of emerging technologies on businesses, industries, and society."
                         }
                     ],
                     "Science - Inquiry": [
                         {
                             code: "CCR.Science.RST.9-10.3",
                             text: "Follow precisely a complex multistep procedure when carrying out experiments, taking measurements, or performing technical tasks."
+                        },
+                        {
+                            code: "CCR.Science.WHST.9-10.9",
+                            text: "Draw evidence from informational texts to support analysis, reflection, and research."
                         },
                         {
                             code: "CCR.Science.WHST.9-10.10",
@@ -604,6 +688,296 @@
                         {
                             code: "CCR.Writing.9-12.10",
                             text: "Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences."
+                        }
+                    ]
+                }
+            },
+            colorado: {
+                title: "Colorado Academic Standards",
+                sections: {
+                    "Computer Science": [
+                        {
+                            code: "HS.CS.IC.1",
+                            text: "Evaluate the beneficial and harmful effects of computing innovations on society, economy, and culture."
+                        },
+                        {
+                            code: "HS.CS.IC.2",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        }
+                    ],
+                    "Science - Inquiry": [
+                        {
+                            code: "SC.HS.1.1",
+                            text: "Ask questions, identify problems, and conduct scientific investigations to find answers or test proposed solutions."
+                        },
+                        {
+                            code: "SC.HS.1.2",
+                            text: "Design, evaluate, and refine solutions to complex problems."
+                        },
+                        {
+                            code: "SC.HS.2.1",
+                            text: "Design and evaluate solutions by specifying constraints and criteria for successful solutions."
+                        }
+                    ],
+                    "Reading, Writing, and Communicating": [
+                        {
+                            code: "RWC.09-10.3.3",
+                            text: "Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences."
+                        }
+                    ]
+                }
+            },
+            ccss_math: {
+                title: "Common Core State Standards - Mathematics",
+                sections: {
+                    "Mathematical Practices": [
+                        {
+                            code: "MP.1",
+                            text: "Make sense of problems and persevere in solving them. (Applied when designing and conducting AI experiments)"
+                        },
+                        {
+                            code: "MP.3",
+                            text: "Construct viable arguments and critique the reasoning of others. (Applied when evaluating AI responses and documenting observations)"
+                        },
+                        {
+                            code: "MP.5",
+                            text: "Use appropriate tools strategically. (Applied when using AI as an experimental tool)"
+                        },
+                        {
+                            code: "MP.6",
+                            text: "Attend to precision. (Applied when documenting experimental observations accurately)"
+                        }
+                    ],
+                    "High School - Statistics & Probability": [
+                        {
+                            code: "S-IC.1",
+                            text: "Understand statistics as a process for making inferences about population parameters based on a random sample from that population."
+                        }
+                    ]
+                }
+            },
+            ngss: {
+                title: "Next Generation Science Standards (NGSS)",
+                sections: {
+                    "Science and Engineering Practices": [
+                        {
+                            code: "SEP-1",
+                            text: "Asking Questions and Defining Problems: Ask questions that arise from examining models or a theory to clarify relationships or to identify problems to be solved."
+                        },
+                        {
+                            code: "SEP-3",
+                            text: "Planning and Carrying Out Investigations: Plan and conduct an investigation individually and collaboratively to produce data to serve as the basis for evidence."
+                        },
+                        {
+                            code: "SEP-4",
+                            text: "Analyzing and Interpreting Data: Analyze data using tools, technologies, and/or models to make valid and reliable scientific claims."
+                        },
+                        {
+                            code: "SEP-6",
+                            text: "Constructing Explanations and Designing Solutions: Construct and revise an explanation based on valid and reliable evidence obtained from a variety of sources."
+                        },
+                        {
+                            code: "SEP-7",
+                            text: "Engaging in Argument from Evidence: Construct, use, and present oral and written arguments supported by empirical evidence and scientific reasoning."
+                        },
+                        {
+                            code: "SEP-8",
+                            text: "Obtaining, Evaluating, and Communicating Information: Critically read scientific literature and evaluate the validity and reliability of the claims, methods, and designs."
+                        }
+                    ],
+                    "Crosscutting Concepts": [
+                        {
+                            code: "CCC-1",
+                            text: "Patterns: Observed patterns guide organization and classification, and they prompt questions about relationships and factors that influence them."
+                        },
+                        {
+                            code: "CCC-4",
+                            text: "Systems and System Models: Models can be used to predict the behavior of a system and test the effects of different variables."
+                        }
+                    ],
+                    "Engineering Design": [
+                        {
+                            code: "HS-ETS1-3",
+                            text: "Evaluate a solution to a complex real-world problem based on criteria including cost, safety, reliability, and societal impacts."
+                        }
+                    ]
+                }
+            },
+            iste: {
+                title: "ISTE Standards for Students",
+                sections: {
+                    "Empowered Learner": [
+                        {
+                            code: "1.a",
+                            text: "Students articulate and set personal learning goals, develop strategies leveraging technology to achieve them, and reflect on the learning process itself to improve learning outcomes."
+                        },
+                        {
+                            code: "1.b",
+                            text: "Students build networks and customize their learning environments in ways that support the learning process."
+                        },
+                        {
+                            code: "1.c",
+                            text: "Students use technology to seek feedback that informs and improves their practice and to demonstrate their learning in a variety of ways."
+                        },
+                        {
+                            code: "1.d",
+                            text: "Students understand the fundamental concepts of technology operations, demonstrate the ability to choose, use and troubleshoot current technologies."
+                        }
+                    ],
+                    "Knowledge Constructor": [
+                        {
+                            code: "3.a",
+                            text: "Students plan and employ effective research strategies to locate information and other resources for their intellectual or creative pursuits."
+                        },
+                        {
+                            code: "3.b",
+                            text: "Students evaluate the accuracy, perspective, credibility and relevance of information, media, data or other resources."
+                        },
+                        {
+                            code: "3.c",
+                            text: "Students curate information from digital resources using a variety of tools and methods to create collections of artifacts that demonstrate meaningful connections or conclusions."
+                        },
+                        {
+                            code: "3.d",
+                            text: "Students build knowledge by actively exploring real-world issues and problems, developing ideas and theories and pursuing answers and solutions."
+                        }
+                    ],
+                    "Innovative Designer": [
+                        {
+                            code: "4.a",
+                            text: "Students know and use a deliberate design process for generating ideas, testing theories, creating innovative artifacts or solving authentic problems."
+                        },
+                        {
+                            code: "4.b",
+                            text: "Students select and use digital tools to plan and manage a design process that considers design constraints and calculated risks."
+                        }
+                    ],
+                    "Computational Thinker": [
+                        {
+                            code: "5.b",
+                            text: "Students collect data or identify relevant data sets, use digital tools to analyze them, and represent data in various ways to facilitate problem-solving and decision-making."
+                        },
+                        {
+                            code: "5.c",
+                            text: "Students break problems into component parts, extract key information, and develop descriptive models to understand complex systems or facilitate problem-solving."
+                        },
+                        {
+                            code: "5.d",
+                            text: "Students understand how automation works and use algorithmic thinking to develop a sequence of steps to create and test automated solutions."
+                        }
+                    ]
+                }
+            },
+            csta: {
+                title: "CSTA K-12 Computer Science Standards",
+                sections: {
+                    "Computing Systems": [
+                        {
+                            code: "3A-CS-01",
+                            text: "Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects."
+                        },
+                        {
+                            code: "3A-CS-02",
+                            text: "Compare levels of abstraction and interactions between application software, system software, and hardware layers."
+                        }
+                    ],
+                    "Data & Analysis": [
+                        {
+                            code: "3A-DA-12",
+                            text: "Create computational models that represent the relationships among different elements of data collected from a phenomenon or process."
+                        },
+                        {
+                            code: "3B-DA-05",
+                            text: "Use data analysis tools and techniques to identify patterns in data representing complex systems."
+                        },
+                        {
+                            code: "3B-DA-07",
+                            text: "Evaluate the ability of models and simulations to test and support the refinement of hypotheses."
+                        }
+                    ],
+                    "Algorithms & Programming": [
+                        {
+                            code: "3A-AP-13",
+                            text: "Create prototypes that use algorithms to solve computational problems by leveraging prior student knowledge and personal interests."
+                        },
+                        {
+                            code: "3B-AP-08",
+                            text: "Describe how artificial intelligence drives many software and physical systems."
+                        },
+                        {
+                            code: "3B-AP-16",
+                            text: "Demonstrate code reuse by creating programming solutions using libraries and APIs."
+                        }
+                    ],
+                    "Impacts of Computing": [
+                        {
+                            code: "3A-IC-24",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        },
+                        {
+                            code: "3B-IC-25",
+                            text: "Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society."
+                        },
+                        {
+                            code: "3B-IC-26",
+                            text: "Evaluate the impact of equity, access, and influence on the distribution of computing resources in a global society."
+                        },
+                        {
+                            code: "3B-IC-27",
+                            text: "Predict how computational innovations that have revolutionized aspects of our culture might evolve."
+                        }
+                    ]
+                }
+            },
+            c3: {
+                title: "C3 Framework - College, Career, and Civic Life (National)",
+                sections: {
+                    "Dimension 1 - Developing Questions": [
+                        {
+                            code: "D1.1.9-12",
+                            text: "Explain how a question reflects an enduring issue in the field."
+                        },
+                        {
+                            code: "D1.5.9-12",
+                            text: "Determine the kinds of sources that will be helpful in answering compelling and supporting questions, taking into consideration multiple points of view in the sources."
+                        }
+                    ],
+                    "Dimension 2 - Economics": [
+                        {
+                            code: "D2.Eco.14.9-12",
+                            text: "Analyze how technological innovations have affected economic decision-making and behaviors."
+                        }
+                    ],
+                    "Dimension 3 - Gathering and Evaluating Sources": [
+                        {
+                            code: "D3.1.9-12",
+                            text: "Gather relevant information from multiple sources representing a wide range of views while using the origin, authority, structure, context, and corroborative value of the sources to guide the selection."
+                        },
+                        {
+                            code: "D3.2.9-12",
+                            text: "Evaluate the credibility of a source by examining how experts value the source."
+                        },
+                        {
+                            code: "D3.3.9-12",
+                            text: "Identify evidence that draws information directly and substantively from multiple sources to detect inconsistencies in evidence in order to revise or strengthen claims."
+                        },
+                        {
+                            code: "D3.4.9-12",
+                            text: "Refine claims and counterclaims attending to precision, significance, and knowledge conveyed through the claim while pointing out the strengths and limitations of both."
+                        }
+                    ],
+                    "Dimension 4 - Communicating Conclusions": [
+                        {
+                            code: "D4.1.9-12",
+                            text: "Construct arguments using precise and knowledgeable claims, with evidence from multiple sources, while acknowledging counterclaims and evidentiary weaknesses."
+                        },
+                        {
+                            code: "D4.2.9-12",
+                            text: "Construct explanations using sound reasoning, correct sequence (linear or non-linear), examples, and details with significant and pertinent information and data, while acknowledging the strengths and weaknesses of the explanations."
+                        },
+                        {
+                            code: "D4.3.9-12",
+                            text: "Present adaptations of arguments and explanations that feature evocative ideas and perspectives on issues and topics to reach a range of audiences and venues outside the classroom."
                         }
                     ]
                 }
